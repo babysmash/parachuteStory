@@ -6,15 +6,22 @@
 //
 
 import UIKit
+import UserNotifications
+import Firebase
 
 @main
+@available(iOS 10, *)
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var appManager = AppManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        initJpush(launchOptions, jPushAppKey: "121b073c578abd49e53047dd")
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
+            application.applicationIconBadgeNumber = 0
         return true
     }
 
@@ -38,3 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+private func sp_getUsersMostFollowerSuccess() {
+    print("Get Info Failed")
+}
